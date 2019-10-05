@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ChatsClient</string>
+    <string name="login_edit_text">Username</string>
+    <string name="login_button">Login</string>
+    <string name="textView">userItem</string>
+    <string name="send_button">send</string>
+    <string name="message_edit_text">Type a message</string>
+</resources>
