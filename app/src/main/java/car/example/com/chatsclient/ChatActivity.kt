@@ -36,9 +36,8 @@ class ChatActivity : AppCompatActivity(),ChatClientObserver {
 
     override fun updateMessage(msg: Message) {
         message = msg.chatMsg.substringBeforeLast("from")
-        user = msg.chatMsg.substringAfterLast("from").substringBeforeLast("at").trim()
+        user = msg.chatMsg.substringAfterLast("from").substringBefore("at")
         time = msg.chatMsg.substringAfterLast("at")
-        println(time)
         messagesList.add(Message(message,user,time).toString())
         runOnUiThread { myAdapter.notifyDataSetChanged() }
     }

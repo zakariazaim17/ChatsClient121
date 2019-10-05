@@ -32,7 +32,6 @@ object ClientConnector: ChatClientObservable,Runnable {
             println("port number: ${socket.localPort}")
             println("New connection established ${socket.inetAddress.hostAddress} ${socket.port}")
             out = PrintWriter(socket.getOutputStream(),true)
-
             val scanner = Scanner(socket.getInputStream())
             while (connected){
                 if(scanner.hasNextLine()) {
