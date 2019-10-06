@@ -6,4 +6,8 @@
     <string name="send_button">send</string>
     <string name="message_edit_text">Type a message</string>
     <string name="App_Logo_Image">app_logo</string>
+    <string name="title_activity_chat_tab">ChatTab</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_titel">Simple Chat</string>
 </resources>
