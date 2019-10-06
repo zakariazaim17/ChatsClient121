@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity(), ChatClientObserver {
                 if (editText.text.isNotEmpty()){
                     userName = editText.text.toString()
                     AppUsers.user = userName
-                    AppUsers.addUser(userName)
                     ClientConnector.sendToServer(ChatMessage(":user","",AppUsers.user))
                 }else{
                     Toast.makeText(this, "Username not set", Toast.LENGTH_LONG).show()

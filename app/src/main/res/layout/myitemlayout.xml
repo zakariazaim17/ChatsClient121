@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="@string/textView"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="#FF9800"
         android:textSize="18sp"
         app:fontFamily="casual" />
 </LinearLayout>
