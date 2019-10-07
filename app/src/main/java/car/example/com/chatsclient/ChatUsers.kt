@@ -8,66 +8,73 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_message__list_.*
+import kotlinx.android.synthetic.main.activity_chat_users.*
 
-class MessageListActivity : AppCompatActivity(), ChatClientObserver {
+class ChatUsers : AppCompatActivity(), ChatClientObserver {
 
-    private lateinit var recyclerView3: RecyclerView
-    private lateinit var myLayoutManager3: RecyclerView.LayoutManager
-    private lateinit var myAdapter3: RecyclerView.Adapter<*>
+    private lateinit var recyclerView2: RecyclerView
+    private lateinit var myLayoutManager2: RecyclerView.LayoutManager
+    private lateinit var myAdapter2: RecyclerView.Adapter<*>
 
-    private var messageList = ArrayList<String>()
+    private var usersList = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_message__list_)
-        setSupportActionBar(toolbar3)
+        setContentView(R.layout.activity_chat_users)
+        setSupportActionBar(toolbar)
 
         ClientConnector.registerObserver(this)
         createRecyclerView()
 
 
         Thread(Runnable {
-            ClientConnector.sendToServer(ChatMessage("messages", "", ChatAppUser.user))
+            ClientConnector.sendToServer(ChatMessage("users", "", ChatAppUser.user))
         }).start()
+
     }
 
+
     override fun updateMessage(msg: Message) {
-        if(!messageList.contains(msg.chatMsg)) {
-            messageList.add(msg.chatMsg)
-            runOnUiThread { myAdapter3.notifyDataSetChanged() }
+        if(!usersList.contains(msg.chatMsg)) {
+            usersList.add(msg.chatMsg)
+            runOnUiThread { myAdapter2.notifyDataSetChanged() }
         }
+
     }
 
     private fun createRecyclerView(){
-        recyclerView3 = findViewById(R.id.recyclerView_Messages)
-        recyclerView3.setHasFixedSize(true)
-        myLayoutManager3 = LinearLayoutManager(this)
-        myAdapter3 = MyRecyclerViewAdapter(this, messageList)
+        recyclerView2 = findViewById(R.id.RecyclerView_User)
+        recyclerView2.setHasFixedSize(true)
+        myLayoutManager2 = LinearLayoutManager(this)
+        myAdapter2 = MyRecyclerViewAdapter(this, usersList)
 
-        recyclerView3.layoutManager = myLayoutManager3
-        recyclerView3.adapter = myAdapter3
+        recyclerView2.layoutManager = myLayoutManager2
+        recyclerView2.adapter = myAdapter2
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater: MenuInflater = menuInflater
-        inflater.inflate(R.menu.menu_messages, menu)
+        inflater.inflate(R.menu.my_menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
-            R.id.Users ->{
-                val intent = Intent(this,ChatUsers::class.java)
+            R.id.Chat ->{
+                val intent = Intent(this,ChatActivity::class.java)
                 startActivity(intent)
             }
-            R.id.Chat->{
-                val intent = Intent(this,ChatActivity::class.java)
+            R.id.Messages->{
+                val intent = Intent(this,MessageListActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.TopChatters->{
+                val intent = Intent(this,TopChatter::class.java)
                 startActivity(intent)
             }
             R.id.Update->{
                 Thread(Runnable {
-                    ClientConnector.sendToServer(ChatMessage("messages", "", ChatAppUser.user))
+                    ClientConnector.sendToServer(ChatMessage("users", "", ChatAppUser.user))
                 }).start()
             }
             R.id.LogOut->{
@@ -83,4 +90,6 @@ class MessageListActivity : AppCompatActivity(), ChatClientObserver {
         return super.onOptionsItemSelected(item)
 
     }
+
+
 }

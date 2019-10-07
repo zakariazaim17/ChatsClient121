@@ -27,7 +27,6 @@ class MyRecyclerViewAdapter(private val context: Context, private val myData: Li
     }
 
 
-
 }
-class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
-
+class MyViewHolder(itemView: View):
+    RecyclerView.ViewHolder(itemView)

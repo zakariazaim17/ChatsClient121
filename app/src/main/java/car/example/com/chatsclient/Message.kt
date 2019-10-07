@@ -1,6 +1,6 @@
 package car.example.com.chatsclient
 
-class Message(var chatMsg:String, private val userName:String, var Time:String) {
+class Message(var chatMsg:String, private val userName:String, private var Time:String) {
 
     //message structure
     override fun toString(): String {

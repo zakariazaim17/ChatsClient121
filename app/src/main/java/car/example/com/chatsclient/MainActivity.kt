@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity(), ChatClientObserver {
             Thread(Runnable {
                 if (editText.text.isNotEmpty()){
                     userName = editText.text.toString()
-                    AppUsers.user = userName
-                    ClientConnector.sendToServer(ChatMessage(":user","",AppUsers.user))
+                    ChatAppUser.user = userName
+                    ClientConnector.sendToServer(ChatMessage(":user","",ChatAppUser.user))
                 }else{
                     Toast.makeText(this, "Username not set", Toast.LENGTH_LONG).show()
                 }
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), ChatClientObserver {
 
     override fun updateMessage(msg: Message) {
         if (msg.chatMsg == ":User set to $userName.") {
-            val intent = Intent(this, ChatActivity::class.java)
+            val intent = Intent(this, ChatUsers::class.java)
             startActivity(intent)
         }
     }

@@ -10,4 +10,17 @@
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <string name="tab_titel">Simple Chat</string>
+    <string name="Chat">Chat</string>
+    <string name="Users">Users</string>
+    <string name="Messages">Messages</string>
+    <string name="Top_Chatters">Top Chatters</string>
+    <string name="Log_out">Log out</string>
+    <string name="UpdateList">Update</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="txt_display">hello</string>
+    <string name="toptext">Simple Chat</string>
+    <string name="usersList">Users</string>
+    <string name="textviewforusers">users_text</string>
 </resources>

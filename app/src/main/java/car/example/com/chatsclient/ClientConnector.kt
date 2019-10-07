@@ -36,8 +36,10 @@ object ClientConnector: ChatClientObservable,Runnable {
             while (connected){
                 if(scanner.hasNextLine()) {
                     val line = scanner.nextLine()
+                    println(line)
                     notify(Message(line, "", ""))
                 }
+
             }
 
         }catch (e: Exception){e.printStackTrace()}
@@ -45,9 +47,11 @@ object ClientConnector: ChatClientObservable,Runnable {
 
     fun sendToServer(msg:ChatMessage){
         try {
-            val gSon = Gson()
-            val msgToServer = gSon.toJson(msg)
-            out.println(msgToServer)
+                val gSon = Gson()
+                val msgToServer = gSon.toJson(msg)
+                out.println(msgToServer)
+
+
         }
         catch(e:Exception){
             e.printStackTrace()

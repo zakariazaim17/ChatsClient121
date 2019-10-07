@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/Update"
+        android:icon="@drawable/ic_system_update"
+        android:title="@string/UpdateList"
+        app:showAsAction = "ifRoom" />
+    <item android:id="@+id/Chat"
+        android:title="@string/Chat"
+        android:icon="@drawable/ic_chat_icon"
+        app:showAsAction = "ifRoom"/>
+    <item android:id="@+id/Users"
+        android:title="@string/usersList" />
+    <item android:id="@+id/TopChatters"
+        android:title="@string/Messages" />
+    <item android:id="@+id/LogOut"
+        android:title="@string/Log_out" />
+
+</menu>
