@@ -35,7 +35,7 @@ class ChatUsers : AppCompatActivity(), ChatClientObserver {
 
 
     override fun updateMessage(msg: Message) {
-        if(!usersList.contains(msg.chatMsg)) {
+        if(!usersList.contains(msg.chatMsg) && !msg.chatMsg.startsWith("@")) {
             usersList.add(msg.chatMsg)
             runOnUiThread { myAdapter2.notifyDataSetChanged() }
         }
@@ -90,6 +90,4 @@ class ChatUsers : AppCompatActivity(), ChatClientObserver {
         return super.onOptionsItemSelected(item)
 
     }
-
-
 }

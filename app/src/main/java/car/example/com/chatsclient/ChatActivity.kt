@@ -41,9 +41,10 @@ class ChatActivity : AppCompatActivity(),ChatClientObserver {
     }
 
     override fun updateMessage(msg: Message) {
-        message = msg.chatMsg.substringBeforeLast("from")
-        user = msg.chatMsg.substringAfterLast("from").substringBefore("at")
-        time = msg.chatMsg.substringAfterLast("at")
+        val mes = msg.chatMsg.removePrefix("@")
+        message = mes.substringBeforeLast("from")
+        user = mes.substringAfterLast("from").substringBefore("at")
+        time = mes.substringAfterLast("at")
         messagesList.add(Message(message, user, time).toString())
         runOnUiThread { myAdapter.notifyDataSetChanged() }
 

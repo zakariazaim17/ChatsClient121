@@ -33,7 +33,7 @@ class MessageListActivity : AppCompatActivity(), ChatClientObserver {
     }
 
     override fun updateMessage(msg: Message) {
-        if(!messageList.contains(msg.chatMsg)) {
+        if(!messageList.contains(msg.chatMsg)&& !msg.chatMsg.startsWith("@")) {
             messageList.add(msg.chatMsg)
             runOnUiThread { myAdapter3.notifyDataSetChanged() }
         }
@@ -69,6 +69,10 @@ class MessageListActivity : AppCompatActivity(), ChatClientObserver {
                 Thread(Runnable {
                     ClientConnector.sendToServer(ChatMessage("messages", "", ChatAppUser.user))
                 }).start()
+            }
+            R.id.TopChatters->{
+                val intent = Intent(this, TopChatter::class.java)
+                startActivity(intent)
             }
             R.id.LogOut->{
                 Thread(Runnable {

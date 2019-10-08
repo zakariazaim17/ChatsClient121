@@ -9,7 +9,7 @@
     <string name="title_activity_chat_tab">ChatTab</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
-    <string name="tab_titel">Simple Chat</string>
+    <string name="tab_titel">Top Chatters</string>
     <string name="Chat">Chat</string>
     <string name="Users">Users</string>
     <string name="Messages">Messages</string>

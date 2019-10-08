@@ -16,7 +16,7 @@
         <activity android:name=".ChatActivity" />
         <activity android:name=".MessageListActivity" />
         <activity android:name=".MainActivity"
-                  android:configChanges="orientation">
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />

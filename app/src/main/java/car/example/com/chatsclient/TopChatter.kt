@@ -33,15 +33,15 @@ class TopChatter : AppCompatActivity(), ChatClientObserver {
     }
 
     override fun updateMessage(msg: Message) {
-        if(!topChatterList.contains(msg.chatMsg)) {
-            topChatterList.add(msg.chatMsg)
+        if(!msg.chatMsg.startsWith("@")) {
+            topChatterList.add(0,msg.chatMsg)
             runOnUiThread { myAdapter4.notifyDataSetChanged() }
         }
 
     }
 
     private fun createRecyclerView(){
-        recyclerView4 = findViewById(R.id.RecyclerView_User)
+        recyclerView4 = findViewById(R.id.recyclerView_TopChatter)
         recyclerView4.setHasFixedSize(true)
         myLayoutManager4 = LinearLayoutManager(this)
         myAdapter4 = MyRecyclerViewAdapter(this, topChatterList)
@@ -70,6 +70,10 @@ class TopChatter : AppCompatActivity(), ChatClientObserver {
                 Thread(Runnable {
                     ClientConnector.sendToServer(ChatMessage("topChatter", "", ChatAppUser.user))
                 }).start()
+            }
+            R.id.Messages->{
+                val intent = Intent(this,MessageListActivity::class.java)
+                startActivity(intent)
             }
             R.id.LogOut->{
                 Thread(Runnable {
