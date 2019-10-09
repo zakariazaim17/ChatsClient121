@@ -33,7 +33,7 @@ class ChatActivity : AppCompatActivity(),ChatClientObserver {
                 if (editText2.text.isNotEmpty()) {
                     val msg = editText2.text.toString()
                     ClientConnector.sendToServer(ChatMessage("", msg, ChatAppUser.user))
-                    editText2.text.clear()
+                    runOnUiThread{editText2.text.clear()}
                 }
             }).start()
         }
@@ -43,8 +43,9 @@ class ChatActivity : AppCompatActivity(),ChatClientObserver {
     override fun updateMessage(msg: Message) {
         val mes = msg.chatMsg.removePrefix("@")
         message = mes.substringBeforeLast("from")
-        user = mes.substringAfterLast("from").substringBefore("at")
-        time = mes.substringAfterLast("at")
+        user = mes.substringAfterLast("from").substringBefore("on")
+        time = mes.substringAfterLast("on")
+        println(Message(message, user, time).toString())
         messagesList.add(Message(message, user, time).toString())
         runOnUiThread { myAdapter.notifyDataSetChanged() }
 
@@ -96,3 +97,4 @@ class ChatActivity : AppCompatActivity(),ChatClientObserver {
 
 
 }
+//{"command":"","message":"that is from me","userName":"user2"}

@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity(), ChatClientObserver {
                     userName = editText.text.toString()
                     ChatAppUser.user = userName
                     ClientConnector.sendToServer(ChatMessage(":user","",ChatAppUser.user))
+
                 }else{
                     Toast.makeText(this, "Username not set", Toast.LENGTH_LONG).show()
                 }

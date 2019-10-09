@@ -33,7 +33,7 @@ class TopChatter : AppCompatActivity(), ChatClientObserver {
     }
 
     override fun updateMessage(msg: Message) {
-        if(!msg.chatMsg.startsWith("@")) {
+        if(!topChatterList.contains(msg.chatMsg) && !msg.chatMsg.startsWith("@")) {
             topChatterList.add(0,msg.chatMsg)
             runOnUiThread { myAdapter4.notifyDataSetChanged() }
         }

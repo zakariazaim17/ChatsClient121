@@ -28,7 +28,7 @@ object ClientConnector: ChatClientObservable,Runnable {
 
     override fun run() {
         try {
-            socket = Socket("192.168.43.72",30003)
+            socket = Socket("192.168.43.239",30003)
             println("port number: ${socket.localPort}")
             println("New connection established ${socket.inetAddress.hostAddress} ${socket.port}")
             out = PrintWriter(socket.getOutputStream(),true)
